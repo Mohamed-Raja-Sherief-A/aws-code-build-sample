@@ -2,7 +2,7 @@ version: 0.2
 env:
   variables:
     APP_NAME: "aws-code-build-sample"
-    BUCKET_NAME: ""
+    BUCKET_NAME: "frontend-deployement-poc"
 phases:
   install:
     runtime-versions:
@@ -19,4 +19,4 @@ phases:
       - echo build process finished, we should uplload to S3 now
       - cd dist/$APP_NAME
       - ls -la
-      - aws s3 sync . s3://my-awsome-bucket-of-files --delete --cache-control max-age=300
+      - aws s3 sync . s3://$BUCKET_NAME --delete --cache-control max-age=300
